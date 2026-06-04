@@ -28,16 +28,23 @@ resource "aws_iam_policy" "devops_boundary" {
         Effect = "Allow"
         Action = [
           "ec2:*",
+          "s3:CreateBucket",
           "s3:GetObject",
           "s3:PutObject",
           "s3:ListBucket",
+          "s3:GetBucketTagging",
+          "s3:PutBucketTagging",
+          "s3:GetBucketAcl",
+          "s3:PutBucketAcl",
+          "s3:GetBucketLocation",
           "cloudtrail:DescribeTrails",
           "cloudtrail:GetTrailStatus",
           "logs:*",
           "cloudwatch:*",
           "iam:GetRole",
           "iam:ListRoles",
-          "sts:AssumeRole"
+          "sts:AssumeRole",
+          "sts:GetCallerIdentity"
         ]
         Resource = "*"
       },
