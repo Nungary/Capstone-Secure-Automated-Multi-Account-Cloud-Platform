@@ -1,0 +1,50 @@
+name: Deploy to AWS via OIDC
+
+on:
+  push:
+    branches:
+      - main  # Only runs on push to main branch
+
+permissions:
+  id-token: write   # Required for OIDC
+  contents: read    # Required to read repo
+
+jobs:
+  deploy:
+    name: Deploy Infrastructure
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Connect to AWS using OIDC (no passwords!)
+      - name: Configure AWS Credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::430287290736:role/DevOpsEngineerRole
+          role-session-name: GitHubActions-Capstone
+          aws-region: us-east-1
+
+      # Step 3: Verify we connected successfully
+      - name: Verify AWS Identity
+        run: |
+          echo "Successfully connected to AWS!"
+          aws sts get-caller-identity
+
+      # Step 4: Deploy a test resource (proves pipeline works)
+      - name: Create Test S3 Bucket via CLI
+        run: |
+          aws s3api create-bucket \
+            --bucket fintech-cicd-test-430287290736 \
+            --region us-east-1
+          echo "Bucket created successfully via GitHub Actions OIDC!"
+
+      # Step 5: Tag the bucket to prove it came from CI/CD
+      - name: Tag the bucket
+        run: |
+          aws s3api put-bucket-tagging \
+            --bucket fintech-cicd-test-430287290736 \
+            --tagging 'TagSet=[{Key=CreatedBy,Value=GitHubActions},{Key=Project,Value=FinTech-Capstone}]'
+          echo "Bucket tagged!"
