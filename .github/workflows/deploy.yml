@@ -3,7 +3,8 @@ name: Deploy to AWS via OIDC
 on:
   push:
     branches:
-      - main  # Only runs on push to main branch
+      - main
+      - unauthorized-branch # Only runs on push to main branch
 
 permissions:
   id-token: write   # Required for OIDC
