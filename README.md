@@ -195,7 +195,8 @@ This restricts access to **only** the `main` branch of the specific repository.
 
 **Screenshot 8 — OIDC Provider in IAM**
 > 📸 *[IAM → Identity providers showing token.actions.githubusercontent.com]*
-<img width="1919" height="960" alt="Screenshot 2026-06-04 120714" src="https://github.com/user-attachments/assets/66d34a9d-45ae-49c6-8871-0d2eaac2c181" />
+<img width="1919" height="962" alt="image" src="https://github.com/user-attachments/assets/53f92f2e-6f66-457b-b486-0e082864bc1d" />
+
 
 **Screenshot 9 — Trust Relationships Tab**
 > 📸 *[ DevOpsEngineerRole Trust relationships tab showing GitHub OIDC condition]*
@@ -262,7 +263,8 @@ Lambda     CheckSeverity
 
 **Screenshot 13 — GuardDuty Enabled**
 > 📸 *[ GuardDuty console showing enabled detector with findings]*
- <img width="1918" height="955" alt="Screenshot 2026-06-04 130942" src="https://github.com/user-attachments/assets/c16cb137-071b-493b-b7e8-95d3460dbbcb" />
+ <img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/291671fe-b647-4edc-a6cb-dafc5063c56c" />
+
 
 
 
@@ -411,7 +413,8 @@ Deployed AWS Config with automated rules and remediation, Security Hub aggregati
 
 **Screenshot 23 — GuardDuty Findings**
 > 📸 *[ GuardDuty Findings showing SSH Brute Force sample finding and Root Credential Usage finding]*
-<img width="1918" height="955" alt="Screenshot 2026-06-04 130942" src="https://github.com/user-attachments/assets/b4f10b51-274e-458f-9373-dd8a9fc35778" />
+<img width="1919" height="1026" alt="Screenshot 2026-06-04 130536" src="https://github.com/user-attachments/assets/7537fc56-7a5a-4e46-9bcb-15bc051a4aa9" />
+
 
 
 ### 5.4 SNS Alert from Security Hub
@@ -450,10 +453,14 @@ Deployed a sample web application on EC2 behind an Application Load Balancer, pr
 | 3 | SQLiProtection | Block |
 
 **Screenshot 25 — WAF Web ACL Rules**
-> 📸 *[INSERT SCREENSHOT: WAF console showing fintech-web-acl with all 3 rules listed]*
+> 📸 * WAF console showing fintech-web-acl with all 3 rules listed]*
+<img width="1919" height="958" alt="Screenshot 2026-06-04 164529" src="https://github.com/user-attachments/assets/66f90ee6-a98a-4348-9637-ac6c24bb2332" />
+
 
 **Screenshot 26 — WAF Associated with ALB**
-> 📸 *[INSERT SCREENSHOT: WAF Web ACL Associated AWS resources tab showing fintech-alb]*
+> 📸 *[ WAF Web ACL Associated AWS resources tab showing fintech-alb]*
+<img width="1919" height="957" alt="Screenshot 2026-06-04 170615" src="https://github.com/user-attachments/assets/58b6127d-9bb2-4aea-8fbb-95bdb72eba97" />
+
 
 ### 6.3 Attack Test Results
 
@@ -463,6 +470,8 @@ $ curl http://fintech-alb-1479622263.us-east-1.elb.amazonaws.com
 HTTP/1.1 200 OK
 # Returns: FinTech Secure Platform HTML page ✅
 ```
+<img width="1919" height="1020" alt="Screenshot 2026-06-04 150817" src="https://github.com/user-attachments/assets/6d12b4b7-34b5-405b-bc8a-90ba1f71e5ed" />
+
 
 #### Test 2 — SQL Injection (BLOCKED)
 ```bash
@@ -485,20 +494,28 @@ $ for i in {1..50}; do curl -s -o /dev/null -w "%{http_code} " http://fintech-al
 ```
 
 **Screenshot 27 — Attack Test Results Terminal**
-> 📸 *[INSERT SCREENSHOT: Terminal showing 403 Forbidden responses for SQLi and XSS tests]*
+> 📸 *[Terminal showing 403 Forbidden responses for SQLi and XSS tests]*
+<img width="1634" height="1079" alt="Screenshot 2026-06-04 150953" src="https://github.com/user-attachments/assets/f9c9a24c-1b21-44e4-aae0-c22fa1481112" />
+
 
 **Screenshot 28 — Rate Limit 403 Responses**
-> 📸 *[INSERT SCREENSHOT: Terminal showing parallel requests returning 403 after rate limit exceeded]*
+> 📸 *[Terminal showing parallel requests returning 403 after rate limit exceeded]*
+<img width="1691" height="757" alt="Screenshot 2026-06-04 170459" src="https://github.com/user-attachments/assets/d2f1fad5-5b33-4626-a3d2-afc75a66d436" />
+
 
 **Screenshot 29 — WAF Blocked Requests Metrics**
-> 📸 *[INSERT SCREENSHOT: CloudWatch or WAF console showing blocked requests metrics/graph]*
+> 📸 *[ CloudWatch or WAF console showing blocked requests metrics/graph]*
+<img width="1919" height="958" alt="Screenshot 2026-06-04 164819" src="https://github.com/user-attachments/assets/1a09bed3-def4-473b-9807-d1b425250941" />
+
 
 ### 6.4 WAF Logging
 
 WAF logs are sent to CloudWatch Log Group: `aws-waf-logs-fintech`
 
 **Screenshot 30 — WAF CloudWatch Logs**
-> 📸 *[INSERT SCREENSHOT: CloudWatch Log Groups showing aws-waf-logs-fintech with log entries]*
+> 📸 *[ CloudWatch Log Groups showing aws-waf-logs-fintech with log entries]*
+<img width="1919" height="960" alt="Screenshot 2026-06-04 165424" src="https://github.com/user-attachments/assets/d9e1166e-a121-43a6-93e7-0484baefca8d" />
+
 
 ### 6.5 Architecture Justification
 - **Why WAF at ALB vs CloudFront?** For internal fintech APIs and regulated workloads, attaching WAF at the ALB provides protection at the network boundary before traffic reaches the application. CloudFront WAF is appropriate for global CDN use cases. ALB-level WAF gives more granular control per application and integrates directly with VPC security groups.
