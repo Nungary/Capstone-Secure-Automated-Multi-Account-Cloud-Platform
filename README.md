@@ -156,7 +156,7 @@ The `DevOpsBoundary` policy acts as a hard ceiling — no role can exceed these 
 **Screenshot 6 — DevOpsBoundary Policy**
 > 📸 *[IAM console showing DevOpsBoundary policy with Allow and Deny statements]*
 
-<img width="1917" height="961" alt="Screenshot 2026-06-04 121219" src="https://github.com/user-attachments/assets/32c49735-4d6e-4d11-9a42-7a7d38a275a0" />
+<img width="1919" height="962" alt="image" src="https://github.com/user-attachments/assets/d5f166e7-2bad-4400-ac89-d44913d3e05e" />
 
 ### 3.2 DevOpsEngineer Role
 
@@ -261,7 +261,10 @@ Lambda     CheckSeverity
 | Status | Enabled |
 
 **Screenshot 13 — GuardDuty Enabled**
-> 📸 *[INSERT SCREENSHOT: GuardDuty console showing enabled detector with findings]*
+> 📸 *[ GuardDuty console showing enabled detector with findings]*
+ <img width="1918" height="955" alt="Screenshot 2026-06-04 130942" src="https://github.com/user-attachments/assets/c16cb137-071b-493b-b7e8-95d3460dbbcb" />
+
+
 
 ### 4.3 Step Functions State Machine
 
@@ -283,22 +286,31 @@ The state machine validates findings, checks severity, and routes to appropriate
 ```
 
 **Screenshot 14 — Step Functions State Machine**
-> 📸 *[INSERT SCREENSHOT: Step Functions console showing IncidentResponseWorkflow]*
+> 📸 *[Step Functions console showing IncidentResponseWorkflow]*
+<img width="1919" height="959" alt="Screenshot 2026-06-04 122934" src="https://github.com/user-attachments/assets/6e23ede9-f404-4e49-b76d-e6ce5052cee8" />
+
 
 **Screenshot 15 — Step Functions Execution**
 > 📸 *[INSERT SCREENSHOT: Step Functions execution showing succeeded status]*
+<img width="1919" height="958" alt="image" src="https://github.com/user-attachments/assets/8396b08e-f22d-4325-9850-0dd5a35ed943" />
+<img width="1919" height="955" alt="image" src="https://github.com/user-attachments/assets/525e1199-6da9-4704-b2ca-766db417c02e" />
+
 
 ### 4.4 Lambda Function Evidence
 
 **Screenshot 16 — Lambda Function**
-> 📸 *[INSERT SCREENSHOT: Lambda console showing IncidentResponder function with Python 3.12 runtime]*
+> 📸 *[Lambda console showing IncidentResponder function with Python 3.12 runtime]*
+<img width="1919" height="956" alt="Screenshot 2026-06-04 122916" src="https://github.com/user-attachments/assets/ba4e950e-0ba4-4e46-913d-2a937fda05fc" />
+
 
 ### 4.5 SNS Alert Evidence
 
 The following email was received within seconds of triggering the Lambda function:
 
 **Screenshot 17 — Security Alert Email**
-> 📸 *[INSERT SCREENSHOT: Gmail showing [CRITICAL] GuardDuty Alert: UnauthorizedAccess:EC2/SSHBruteForce email with Severity: 8, Account: 430287290736, Saved to S3 path]*
+> 📸 *[Gmail showing [CRITICAL] GuardDuty Alert: UnauthorizedAccess:EC2/SSHBruteForce email with Severity: 8, Account: 430287290736, Saved to S3 path]*
+<img width="1582" height="939" alt="Screenshot 2026-06-04 122816" src="https://github.com/user-attachments/assets/b4f79248-a467-44b0-8c5a-fde8a56b2e07" />
+
 
 **Email Contents Received:**
 ```
@@ -314,7 +326,9 @@ Automated response has been triggered.
 ### 4.6 S3 Finding Storage
 
 **Screenshot 18 — Finding Saved to S3**
-> 📸 *[INSERT SCREENSHOT: S3 bucket fintech-security-findings-430287290736 showing guardduty-findings/ folder with JSON file]*
+> 📸 *[S3 bucket fintech-security-findings-430287290736 showing guardduty-findings/ folder with JSON file]*
+<img width="1919" height="965" alt="Screenshot 2026-06-04 123022" src="https://github.com/user-attachments/assets/298f163e-31c4-497a-993b-db408e63e87c" />
+
 
 ### 4.7 EC2 Isolation Evidence
 
@@ -332,7 +346,9 @@ Instance `i-04c38ae5708225966` was automatically tagged as ISOLATED:
 ```
 
 **Screenshot 19 — EC2 Instance ISOLATED Tags**
-> 📸 *[INSERT SCREENSHOT: EC2 console showing fintech-test-server Tags tab with SecurityStatus: ISOLATED, AutoRemediated: true]*
+> 📸 *[EC2 console showing fintech-test-server Tags tab with SecurityStatus: ISOLATED, AutoRemediated: true]*
+
+<img width="1919" height="932" alt="Screenshot 2026-06-04 123612" src="https://github.com/user-attachments/assets/70aa8dd7-d58c-4c7e-bc37-da6f69bd0a59" />
 
 ### 4.8 Architecture Justification
 - **Why Step Functions?** Step Functions provides guaranteed ordered execution with built-in error handling. If Lambda fails, Step Functions retries automatically. This is critical for consistent incident response — a manual process would be error-prone and slow.
@@ -360,7 +376,10 @@ Deployed AWS Config with automated rules and remediation, Security Hub aggregati
 ```
 
 **Screenshot 20 — Config Rules Dashboard**
-> 📸 *[INSERT SCREENSHOT: AWS Config Rules console showing s3-bucket-server-side-encryption-enabled as COMPLIANT]*
+> 📸 *[ AWS Config Rules console showing s3-bucket-server-side-encryption-enabled as COMPLIANT]*
+<img width="1919" height="959" alt="Screenshot 2026-06-04 130821" src="https://github.com/user-attachments/assets/b15caeba-af64-4d05-b0e7-47a9a1c7eb25" />
+ 
+
 
 **Note on Auto-Remediation:** As of 2023, AWS enforces AES-256 encryption on all new S3 buckets by default. The Config rule confirms COMPLIANT status across all buckets. The auto-remediation configuration (`AWS-EnableS3BucketEncryption`) is deployed and would trigger automatically if any non-compliant bucket were detected, enforcing `aws:kms` encryption.
 
@@ -369,10 +388,14 @@ Deployed AWS Config with automated rules and remediation, Security Hub aggregati
 **Standards Enabled:** AWS Foundational Security Best Practices v1.0.0
 
 **Screenshot 21 — Security Hub Findings**
-> 📸 *[INSERT SCREENSHOT: Security Hub Findings console showing CRITICAL and HIGH findings including SSM, MFA, KMS, Inspector, EBS findings]*
+> 📸 *[ Security Hub Findings console showing CRITICAL and HIGH findings including SSM, MFA, KMS, Inspector, EBS findings]*
+<img width="1918" height="955" alt="Screenshot 2026-06-04 130942" src="https://github.com/user-attachments/assets/b3a7d073-13ef-402e-940e-ac0164e8739e" />
+
 
 **Screenshot 22 — Security Standards**
-> 📸 *[INSERT SCREENSHOT: Security Hub Security standards page showing AWS Foundational Security Best Practices v1.0.0 enabled]*
+> 📸 *[ Security Hub Security standards page showing AWS Foundational Security Best Practices v1.0.0 enabled]*
+<img width="958" height="794" alt="Screenshot 2026-06-04 131040" src="https://github.com/user-attachments/assets/c9f782e2-884a-4276-a893-0ac0bc073a59" />
+
 
 **Active Findings Detected:**
 
@@ -387,12 +410,16 @@ Deployed AWS Config with automated rules and remediation, Security Hub aggregati
 ### 5.3 GuardDuty Findings
 
 **Screenshot 23 — GuardDuty Findings**
-> 📸 *[INSERT SCREENSHOT: GuardDuty Findings showing SSH Brute Force sample finding and Root Credential Usage finding]*
+> 📸 *[ GuardDuty Findings showing SSH Brute Force sample finding and Root Credential Usage finding]*
+<img width="1918" height="955" alt="Screenshot 2026-06-04 130942" src="https://github.com/user-attachments/assets/b4f10b51-274e-458f-9373-dd8a9fc35778" />
+
 
 ### 5.4 SNS Alert from Security Hub
 
 **Screenshot 24 — Security Hub SNS Alert Email**
 > 📸 *[INSERT SCREENSHOT: Gmail showing [CRITICAL] Security Hub High Severity Finding Detected email]*
+<img width="1528" height="867" alt="Screenshot 2026-06-04 131650" src="https://github.com/user-attachments/assets/b9848334-b33d-4a09-9030-1a0dc1c65f37" />
+
 
 ### 5.5 Architecture Justification
 - **Why AWS Config?** Config provides continuous compliance monitoring. Instead of point-in-time audits, every resource change is evaluated against rules. For a CBK-regulated fintech, continuous compliance is a requirement, not an option.
