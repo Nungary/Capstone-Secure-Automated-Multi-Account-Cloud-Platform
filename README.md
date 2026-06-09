@@ -59,7 +59,9 @@ Implemented AWS Organizations with a hierarchical OU structure. Applied Service 
 ### 2.1 OU Structure
 
 **Screenshot 1 — AWS Organizations OU Structure**
-> 📸 *[INSERT SCREENSHOT: AWS Organizations console showing Root → Security OU, Production OU, Development OU with account Nungari-Projects listed]*
+> 📸 *AWS Organizations console showing Root → Security OU, Production OU, Development OU with account Nungari-Projects listed]*
+<img width="1919" height="957" alt="Screenshot 2026-06-02 181605" src="https://github.com/user-attachments/assets/ed617f02-06f6-4fff-ad4a-834fe9f22a66" />
+
 
 **Organization Details:**
 | Component | ID |
@@ -98,10 +100,15 @@ The following SCP was applied to the Production OU to prevent destructive action
 ```
 
 **Screenshot 2 — SCP Attached to Production OU**
-> 📸 *[INSERT SCREENSHOT: Production OU Policies tab showing ProductionProtectionPolicy attached directly with description "Prevents EC2 termination and CloudTrail disabling"]*
+> 📸 *[ SCREENSHOT: Production OU Policies tab showing ProductionProtectionPolicy attached directly with description "Prevents EC2 termination and CloudTrail disabling"]*
+<img width="1919" height="955" alt="Screenshot 2026-06-02 185856" src="https://github.com/user-attachments/assets/be9165e2-e4a9-49dd-b156-5c7b9a0f33e8" />
+
+
 
 **Screenshot 3 — SCP JSON Content**
-> 📸 *[INSERT SCREENSHOT: ProductionProtectionPolicy content showing the full JSON with Deny statements]*
+> 📸 *[ProductionProtectionPolicy content showing the full JSON with Deny statements]*
+<img width="1919" height="963" alt="Screenshot 2026-06-02 184717" src="https://github.com/user-attachments/assets/e8fefa13-bba6-49e8-911d-b9853cd45cb2" />
+
 
 ### 2.3 CloudTrail Centralized Logging
 
@@ -114,10 +121,14 @@ Deployed via Terraform. All API activity across all regions is captured and stor
 - `aws_cloudtrail` — `fintech-org-trail` (multi-region, log validation enabled)
 
 **Screenshot 4 — CloudTrail Trail**
-> 📸 *[INSERT SCREENSHOT: CloudTrail console showing fintech-org-trail as multi-region trail]*
+> 📸 *[SCREENSHOT: CloudTrail console showing fintech-org-trail as multi-region trail]*
+<img width="1919" height="954" alt="image" src="https://github.com/user-attachments/assets/5fa9c102-2df0-412e-a4ef-b1956a571000" />
+
 
 **Screenshot 5 — CloudTrail S3 Bucket**
-> 📸 *[INSERT SCREENSHOT: S3 console showing fintech-cloudtrail-430287290736 bucket]*
+> 📸 *[ S3 console showing fintech-cloudtrail-430287290736 bucket]*
+<img width="1919" height="944" alt="image" src="https://github.com/user-attachments/assets/4fd8064f-7d09-436d-b46b-3fb46b4821c0" />
+
 
 ### 2.4 Architecture Justification
 - **Why SCPs over IAM policies?** SCPs apply to the entire OU regardless of what IAM policies allow. Even an account administrator cannot override an SCP denial. This is critical for a fintech regulated environment where audit trails must be preserved.
@@ -143,7 +154,9 @@ The `DevOpsBoundary` policy acts as a hard ceiling — no role can exceed these 
 - ✅ Can manage CloudWatch logs
 
 **Screenshot 6 — DevOpsBoundary Policy**
-> 📸 *[INSERT SCREENSHOT: IAM console showing DevOpsBoundary policy with Allow and Deny statements]*
+> 📸 *[IAM console showing DevOpsBoundary policy with Allow and Deny statements]*
+
+<img width="1917" height="961" alt="Screenshot 2026-06-04 121219" src="https://github.com/user-attachments/assets/32c49735-4d6e-4d11-9a42-7a7d38a275a0" />
 
 ### 3.2 DevOpsEngineer Role
 
@@ -155,7 +168,9 @@ IAM Role: DevOpsEngineerRole
 ```
 
 **Screenshot 7 — DevOpsEngineerRole with Boundary**
-> 📸 *[INSERT SCREENSHOT: IAM Role DevOpsEngineerRole showing Permissions boundary: DevOpsBoundary]*
+> 📸 *[ IAM Role DevOpsEngineerRole showing Permissions boundary: DevOpsBoundary]*
+<img width="1919" height="960" alt="Screenshot 2026-06-04 121142" src="https://github.com/user-attachments/assets/15eac812-b4a2-4bec-b76d-506417663b67" />
+
 
 ### 3.3 OIDC Federation
 
