@@ -548,7 +548,9 @@ Created a Customer Managed KMS Key (CMK) with automatic rotation, encrypted S3 b
 ```
 
 **Screenshot 31 — KMS Key Details**
-> 📸 *[INSERT SCREENSHOT: KMS console showing fintech-cmk with Status: Enabled and Key rotation: Enabled]*
+> 📸 *[KMS console showing fintech-cmk with Status: Enabled and Key rotation: Enabled]*
+<img width="1901" height="941" alt="Screenshot 2026-06-04 184246" src="https://github.com/user-attachments/assets/4b27105d-b5ef-4cc8-8982-102c553294a2" />
+
 
 ### 7.2 S3 Encryption with KMS
 
@@ -563,10 +565,14 @@ Created a Customer Managed KMS Key (CMK) with automatic rotation, encrypted S3 b
 ```
 
 **Screenshot 32 — S3 Bucket Encryption**
-> 📸 *[INSERT SCREENSHOT: S3 bucket fintech-encrypted-data-430287290736 Properties showing Server-side encryption: SSE-KMS with CMK ARN]*
+> 📸 *[ S3 bucket fintech-encrypted-data-430287290736 Properties showing Server-side encryption: SSE-KMS with CMK ARN]*
+<img width="1919" height="954" alt="Screenshot 2026-06-04 184619" src="https://github.com/user-attachments/assets/0b44a9bd-78f9-4936-9dc8-9531430b0d3d" />
+
 
 **Screenshot 33 — S3 Object Metadata**
-> 📸 *[INSERT SCREENSHOT: S3 object test-encrypted-file.txt Properties showing ServerSideEncryption: aws:kms]*
+> 📸 *[ S3 object test-encrypted-file.txt Properties showing ServerSideEncryption: aws:kms]*
+<img width="1919" height="953" alt="Screenshot 2026-06-04 184337" src="https://github.com/user-attachments/assets/051aba1d-9362-47cf-8266-6a50e82bc034" />
+
 
 ### 7.3 Secrets Manager Encryption
 
@@ -581,14 +587,18 @@ Application secrets are encrypted using the CMK:
 ```
 
 **Screenshot 34 — Secrets Manager with KMS**
-> 📸 *[INSERT SCREENSHOT: Secrets Manager console showing fintech/app/secrets with KMS key ID attached]*
+> 📸 *[Secrets Manager console showing fintech/app/secrets with KMS key ID attached]*
+<img width="1919" height="966" alt="Screenshot 2026-06-07 220006" src="https://github.com/user-attachments/assets/d5b73bb2-1085-4b53-a332-065257450777" />
+
 
 ### 7.4 ACM Certificate
 
 A public certificate was requested for the platform domain. It remains in `PENDING_VALIDATION` status as DNS validation requires domain ownership.
 
 **Screenshot 35 — ACM Certificate**
-> 📸 *[INSERT SCREENSHOT: ACM console showing certificate for fintech.nungari-projects.internal in Pending validation status]*
+> 📸 *[ ACM console showing certificate for fintech.nungari-projects.internal in Pending validation status]*
+<img width="1387" height="958" alt="Screenshot 2026-06-07 215430" src="https://github.com/user-attachments/assets/d787c96c-381d-46e2-bd13-491aae5f2a44" />
+
 
 ### 7.5 Encryption Coverage Summary
 
@@ -622,7 +632,9 @@ A public certificate was requested for the platform domain. It remains in `PENDI
 **Which automation triggered:** AWS Config rule `s3-bucket-server-side-encryption-enabled`
 
 **Screenshot 36 — Config COMPLIANT**
-> 📸 *[INSERT SCREENSHOT: Terminal showing ComplianceType: COMPLIANT for s3-bucket-server-side-encryption-enabled rule]*
+> 📸 *[ Terminal showing ComplianceType: COMPLIANT for s3-bucket-server-side-encryption-enabled rule]*
+
+<img width="1387" height="958" alt="Screenshot 2026-06-07 215430" src="https://github.com/user-attachments/assets/4618e468-922f-46db-a62f-1fe910d43785" />
 
 ---
 
@@ -643,13 +655,18 @@ A public certificate was requested for the platform domain. It remains in `PENDI
 - EC2 tags — instance marked ISOLATED
 
 **Screenshot 37 — Lambda Response**
-> 📸 *[INSERT SCREENSHOT: Terminal showing Lambda response with statusCode: 200, instanceId, message: Incident response completed successfully]*
+> 📸 *[ Terminal showing Lambda response with statusCode: 200, instanceId, message: Incident response completed successfully]*
+<img width="1919" height="1079" alt="Screenshot 2026-06-04 123459" src="https://github.com/user-attachments/assets/92f9f5aa-1811-4d84-a6fd-7cf04fc4d7aa" />
+
 
 **Screenshot 38 — SNS Email Alert**
-> 📸 *[INSERT SCREENSHOT: Gmail showing CRITICAL GuardDuty Alert email with all finding details]*
+> 📸 *[ Gmail showing CRITICAL GuardDuty Alert email with all finding details]*
+<img width="1582" height="939" alt="Screenshot 2026-06-04 122816" src="https://github.com/user-attachments/assets/e745d2a0-56f1-4b73-987d-7dfab22d1693" />
+
 
 **Screenshot 39 — EC2 ISOLATED Tags**
-> 📸 *[INSERT SCREENSHOT: EC2 Tags tab showing SecurityStatus: ISOLATED, AutoRemediated: true]*
+> 📸 *[ EC2 Tags tab showing SecurityStatus: ISOLATED, AutoRemediated: true]*
+<img width="1919" height="932" alt="Screenshot 2026-06-04 123612" src="https://github.com/user-attachments/assets/96ff6ffd-9a19-4ceb-922d-a55681be181a" />
 
 ---
 
@@ -672,7 +689,8 @@ Any other branch is **rejected**.
 **Which automation triggered:** AWS STS rejected `AssumeRoleWithWebIdentity` — no AWS resources were accessed.
 
 **Screenshot 40 — Failed GitHub Actions (Unauthorized Branch)**
-> 📸 *[INSERT SCREENSHOT: GitHub Actions showing failed workflow on unauthorized-branch with OIDC error: Could not assume role]*
+> 📸 *[ GitHub Actions showing failed workflow on unauthorized-branch with OIDC error: Could not assume role]*
+<img width="1919" height="960" alt="Screenshot 2026-06-07 220809" src="https://github.com/user-attachments/assets/98d21438-ef1a-4892-ac5f-fd23270a2de8" />
 
 ---
 
@@ -694,11 +712,13 @@ Any other branch is **rejected**.
 - Rule 2 (RateLimitRule) → blocked after 5 req/window
 
 **Screenshot 41 — All Attack Tests Blocked**
-> 📸 *[INSERT SCREENSHOT: Terminal showing 403 Forbidden for SQLi, XSS, and rate limit tests]*
+> 📸 *[ Terminal showing 403 Forbidden for SQLi, XSS, and rate limit tests]*
+<img width="1595" height="1079" alt="Screenshot 2026-06-04 151956" src="https://github.com/user-attachments/assets/370f4d6c-01c1-4d75-8aa0-07432212a9c7" />
+
 
 ---
 
-## 9. Exam-Style Questions
+## 9. Questions
 
 ### Q1: How do SCPs and Permission Boundaries differ?
 
@@ -743,38 +763,6 @@ In this project, the `IncidentResponseWorkflow` state machine ensures that every
 
 ---
 
-### Q4: Why should WAF be attached at ALB vs CloudFront?
-
-**WAF at CloudFront** is appropriate when:
-- Protecting globally distributed static content
-- Needing geo-blocking at the edge
-- Caching is part of the architecture
-
-**WAF at ALB** is appropriate (as in this project) when:
-- Protecting internal APIs and dynamic application backends
-- Traffic stays within a VPC and doesn't need global CDN distribution
-- Per-application rule control is needed
-- Integration with VPC security groups provides defense-in-depth
-- Regulatory compliance requires traffic to remain within a specific region (CBK requires data residency in Kenya/specific regions)
-
-For a CBK-regulated fintech, ALB-level WAF ensures all financial transaction APIs are protected before reaching application code, with traffic remaining within the regulated region.
-
----
-
-### Q5: Why is auto-remediation critical for compliance?
-
-Manual compliance processes have three fundamental problems:
-1. **Human delay** — a misconfigured resource may be exposed for hours before a human detects and fixes it
-2. **Human error** — manual fixes may be incomplete or introduce new misconfigurations
-3. **Scale** — as infrastructure grows, manual compliance checking becomes impossible
-
-Auto-remediation (as implemented with AWS Config in this project) provides:
-- **Immediate response** — a non-compliant resource is remediated within minutes of detection
-- **Consistency** — the same fix is applied every time, no human variation
-- **Continuous compliance** — the system never drifts into a non-compliant state
-- **Audit trail** — every remediation is logged in CloudTrail for regulatory review
-
-For a CBK-regulated fintech, auto-remediation is the difference between a compliance violation lasting minutes (auto-remediated) vs. days (manual review cycle).
 
 ---
 
@@ -821,8 +809,4 @@ fintech-capstone/
 
 ### GitHub Repository
 **https://github.com/Nungary/Capstone-Secure-Automated-Multi-Account-Cloud-Platform**
-
----
-
-*Report prepared for Cloud Security Capstone Assessment — June 2026*  
-*AWS Account: 430287290736 | Region: us-east-1 | Student: Nungari*
+ri*
