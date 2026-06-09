@@ -634,7 +634,8 @@ A public certificate was requested for the platform domain. It remains in `PENDI
 **Screenshot 36 — Config COMPLIANT**
 > 📸 *[ Terminal showing ComplianceType: COMPLIANT for s3-bucket-server-side-encryption-enabled rule]*
 
-<img width="1387" height="958" alt="Screenshot 2026-06-07 215430" src="https://github.com/user-attachments/assets/4618e468-922f-46db-a62f-1fe910d43785" />
+<img width="1564" height="413" alt="Screenshot 2026-06-04 131113" src="https://github.com/user-attachments/assets/501e00fe-0e4d-4b38-a4b0-3926be90bbea" />
+
 
 ---
 
