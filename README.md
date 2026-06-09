@@ -194,23 +194,32 @@ Configured GitHub Actions to assume the `DevOpsEngineerRole` using web identity 
 This restricts access to **only** the `main` branch of the specific repository.
 
 **Screenshot 8 — OIDC Provider in IAM**
-> 📸 *[INSERT SCREENSHOT: IAM → Identity providers showing token.actions.githubusercontent.com]*
+> 📸 *[IAM → Identity providers showing token.actions.githubusercontent.com]*
+<img width="1919" height="960" alt="Screenshot 2026-06-04 120714" src="https://github.com/user-attachments/assets/66d34a9d-45ae-49c6-8871-0d2eaac2c181" />
 
 **Screenshot 9 — Trust Relationships Tab**
-> 📸 *[INSERT SCREENSHOT: DevOpsEngineerRole Trust relationships tab showing GitHub OIDC condition]*
+> 📸 *[ DevOpsEngineerRole Trust relationships tab showing GitHub OIDC condition]*
+<img width="1919" height="961" alt="image" src="https://github.com/user-attachments/assets/4c70b343-a1cd-4e36-b7e8-8b110c805690" />
+
 
 ### 3.4 GitHub Actions Workflow Success
 
 **Screenshot 10 — GitHub Actions All Green**
-> 📸 *[INSERT SCREENSHOT: GitHub Actions showing all steps green: Set up job, Checkout code, Configure AWS Credentials via OIDC, Verify AWS Identity, Create Test S3 Bucket via CLI, Tag the bucket]*
+> 📸 *[ GitHub Actions showing all steps green: Set up job, Checkout code, Configure AWS Credentials via OIDC, Verify AWS Identity, Create Test S3 Bucket via CLI, Tag the bucket]*
+<img width="1919" height="968" alt="Screenshot 2026-06-04 120412" src="https://github.com/user-attachments/assets/b6297996-8149-4822-9e43-d774b4d23de7" />
+
 
 ### 3.5 CI/CD Deployed Resource
 
 **Screenshot 11 — S3 Bucket Created by Pipeline**
-> 📸 *[INSERT SCREENSHOT: S3 console showing fintech-cicd-test-430287290736 bucket]*
+> 📸 *[ S3 console showing fintech-cicd-test-430287290736 bucket]*
+<img width="1919" height="963" alt="Screenshot 2026-06-04 120557" src="https://github.com/user-attachments/assets/9a541ce0-9b60-4483-a586-5323b11b9ad8" />
+
 
 **Screenshot 12 — Bucket Tags from GitHub Actions**
-> 📸 *[INSERT SCREENSHOT: Bucket tags showing CreatedBy: GitHubActions, Project: FinTech-Capstone]*
+> 📸 *[Bucket tags showing CreatedBy: GitHubActions, Project: FinTech-Capstone]*
+<img width="1919" height="960" alt="Screenshot 2026-06-04 120714" src="https://github.com/user-attachments/assets/ed6d0ead-5c7b-4767-8eff-5c92b6bfc06a" />
+
 
 ### 3.6 Architecture Justification
 - **Why OIDC over access keys?** Static keys are a leading cause of cloud breaches. OIDC issues temporary credentials (15-minute sessions) that expire automatically. There is nothing to rotate, nothing to leak, and nothing to accidentally commit to a repository.
